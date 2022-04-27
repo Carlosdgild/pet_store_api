@@ -6,6 +6,13 @@
 
 # Ignore bundler config.
 /.bundle
+**/vendor/bundle/
+
+*/node_modules/
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/.sqlite3-
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -13,4 +20,47 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+/tmp/cache/*
+!/tmp/cache/
+!/tmp/cache/.gitkeep
+
+/tmp/cache/assets/*
+!/tmp/cache/assets/
+!/tmp/cache/assets/.gitkeep
+
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.gitkeep
+/public/uploads/*
+!/public/uploads/
+!/public/uploads/.gitkeep
 .byebug_history
+/spec/support/uploads/*
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+*~
+*#
+.#*
+/public/system
+/public/assets/*
+!/public/assets/
+!/public/assets/.gitkeep
+/db/backups
+
+# Ignore .ENV
+.env
+
+# Coverage
+**/coverage
+
+# DS Store
+.DS_Store
+
+.cache
