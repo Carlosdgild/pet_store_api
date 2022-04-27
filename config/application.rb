@@ -19,6 +19,9 @@ require "action_controller/railtie"
 Bundler.require(*Rails.groups)
 
 module PetStoreApi
+  #
+  # Main application class
+  #
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1

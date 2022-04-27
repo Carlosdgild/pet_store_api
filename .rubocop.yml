@@ -12,20 +12,20 @@ require:
 
 AllCops:
   Exclude:
-    - '*/assets//'
-    - '*/uploads//'
-    - '*/javascript//'
-    - '*/views//'
-    - '*/bin//'
-    - '*/coverage//'
-    - '*/db/*/schema.rb'
-    - '*/log//'
-    - '*/public//'
-    - '*/storage//'
-    - '*/script//'
-    - '*/vendor//'
-    - '*/tmp//'
-    - '*/node_modules//'
+    - '**/assets/**/*'
+    - '**/uploads/**/*'
+    - '**/javascript/**/*'
+    - '**/views/**/*'
+    - '**/bin/**/*'
+    - '**/coverage/**/*'
+    - '**/db/**/schema.rb'
+    - '**/log/**/*'
+    - '**/public/**/*'
+    - '**/storage/**/*'
+    - '**/script/**/*'
+    - '**/vendor/**/*'
+    - '**/tmp/**/*'
+    - '**/node_modules/**/*'
   ExtraDetails: true
   NewCops: enable
 
@@ -106,7 +106,7 @@ Layout/IndentationWidth:
 Layout/LineLength:
   Max: 300
   Exclude:
-    - '*/db//'
+    - '**/db/**/*'
 
 # Lint
 Lint/EmptyBlock:
@@ -114,7 +114,7 @@ Lint/EmptyBlock:
 
 Lint/AmbiguousBlockAssociation:
   Exclude:
-    - '*/spec//'
+    - '**/spec/**/*'
 
 Lint/InheritException:
   Enabled: true
@@ -137,13 +137,13 @@ Lint/NonDeterministicRequireOrder:
 
 Lint/ConstantDefinitionInBlock:
   Exclude:
-  - '*/spec//'
+  - '**/spec/**/*'
 
 # Metrics
 Metrics/ParameterLists:
   Enabled: true
   Exclude:
-  - '*/controllers/'
+  - '**/controllers/*'
 
 Metrics/AbcSize:
   Max: 300
@@ -157,7 +157,7 @@ Metrics/ClassLength:
 Metrics/MethodLength:
   Max: 80
   Exclude:
-    - '*/db//'
+    - '**/db/**/*'
 
 Metrics/CyclomaticComplexity:
   Max: 50
@@ -168,13 +168,13 @@ Metrics/PerceivedComplexity:
 Metrics/ModuleLength:
   Enabled: true
   Exclude:
-  - '*/spec//'
+  - '**/spec/**/*'
 
 # Naming
 Naming/HeredocDelimiterNaming:
   Enabled: true
   Exclude:
-    - '*/config//'
+    - '**/config/**/*'
 
 Naming/PredicateName:
   AllowedMethods:
@@ -183,16 +183,16 @@ Naming/PredicateName:
     - has_related_questions
   Enabled: true
   Exclude:
-    - '*/app/serializers//'
-    - '*/spec//'
+    - '**/app/serializers/**/*'
+    - '**/spec/**/*'
   ForbiddenPrefixes:
     - is_
 
 Naming/VariableNumber:
   Enabled: true
   Exclude:
-    - '*/spec//'
-    - '*/db//'
+    - '**/spec/**/*'
+    - '**/db/**/*'
 
 Naming/FileName:
   Enabled: true
@@ -239,19 +239,19 @@ RSpec/ExampleLength:
   Enabled: true
   Max: 50
   Exclude:
-    - '*/spec/requests//.rb'
+    - '**/spec/requests/**/*.rb'
 
 RSpec/EmptyExampleGroup:
   Enabled: true
   Severity: warning
   Exclude:
-    - '*/spec/requests//.rb'
+    - '**/spec/requests/**/*.rb'
 
 RSpec/VariableName:
   Enabled: true
   Exclude:
-    - '*/spec/requests//.rb'
-    - '*/spec/support//.rb'
+    - '**/spec/requests/**/*.rb'
+    - '**/spec/support/**/*.rb'
 
 RSpec/MultipleMemoizedHelpers:
   Enabled: true
@@ -260,18 +260,18 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/ScatteredSetup:
   Enabled: true
   Exclude:
-    - '*/spec/requests//.rb'
+    - '**/spec/requests/**/*.rb'
 
 RSpec/AnyInstance:
   Enabled: false
 
 RSpec/LeakyConstantDeclaration:
   Exclude:
-  - '*/spec//'
+  - '**/spec/**/*'
 
 RSpec/LetSetup:
   Exclude:
-  - '*/spec//'
+  - '**/spec/**/*'
 
 RSpec/NamedSubject:
   Enabled: true
@@ -279,12 +279,12 @@ RSpec/NamedSubject:
 
 RSpec/ImplicitSubject:
   Exclude:
-  - '*/spec/requests//.rb'
+  - '**/spec/requests/**/*.rb'
 
 RSpec/FilePath:
   Enabled: true
   Exclude:
-    - '*/spec/lib//.rb'
+    - '**/spec/lib/**/*.rb'
 
 # Rails
 Rails/OutputSafety:
@@ -292,7 +292,7 @@ Rails/OutputSafety:
   Severity: error
 
 Rails/I18nLocaleTexts:
-  Enabled: false
+  Enabled: true
   Severity: error
 
 Rails/CreateTableWithTimestamps:
@@ -311,12 +311,12 @@ Rails/FilePath:
 Rails/FindBy:
   Enabled: true
   Include:
-    - '*/.rb'
+    - '**/*.rb'
 
 Rails/FindEach:
   Enabled: true
   Include:
-    - '*/.rb'
+    - '**/*.rb'
 
 Rails/InverseOf:
   Enabled: false
@@ -337,7 +337,7 @@ Rails/Output:
   Enabled: true
   Exclude:
     - '**/config/puma.rb'
-    - '*/initializers/.rb'
+    - '**/initializers/*.rb'
     - '**/seeds.rb'
 
 Rails/UniqueValidationWithoutIndex:
@@ -392,7 +392,7 @@ Style/ReturnNil:
 Style/ClassAndModuleChildren:
   Enabled: true
   Exclude:
-    - '*/serializers//'
+    - '**/serializers/**/*'
 
 Style/CollectionMethods:
   Description: 'Preferred collection methods.'
@@ -413,7 +413,7 @@ Style/FormatStringToken:
 Style/EvalWithLocation:
   Enabled: true
   Exclude:
-    - '*/initializers//'
+    - '**/initializers/**/*'
 
 # Security
 Security/MarshalLoad:
