@@ -6,12 +6,13 @@ ENV["SKIP_COVERAGE"] ||= "false"
 unless ENV.fetch("SKIP_COVERAGE", nil) == "true"
   require "simplecov"
 
+  SimpleCov.minimum_coverage_by_file line: 80
+
   SimpleCov.start "rails" do
     add_filter "bin/"
     add_filter "db/"
     add_filter "app/models/application_record.rb"
     add_filter "app/helpers/"
-    add_filter "app/controllers/application_controller.rb"
     add_filter "app/controllers/api_controller.rb"
     add_filter "lib/pagination/"
     add_filter "lib/rendering/"
@@ -29,9 +30,9 @@ require File.expand_path("../config/environment", __dir__)
 abort("✗ The Rails environment is running in production mode!") if Rails.env.production?
 
 if Rails.configuration.eager_load
-  puts "CI mode enabled!".green
+  puts "CI mode enabled!"
 else
-  puts "CI mode disabled!".green
+  puts "CI mode disabled!"
 end
 
 require "rspec/rails"

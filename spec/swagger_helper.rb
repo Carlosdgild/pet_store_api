@@ -24,10 +24,6 @@ RSpec.configure do |config|
       paths: {},
       components: {
         securitySchemes: {
-          bearerAuth: {
-            type: :http,
-            scheme: :bearer
-          }
         }
       },
       servers: [

@@ -19,7 +19,7 @@ speedups:
   setter_vs_attr_writer: true
 
 exclude_paths:
-  - 'vendor/*/.rb'
+  - 'vendor/**/*.rb'
   - 'db/schema.rb'
-  - 'tmp/*/.rb'
-  - 'public/*/.rb'
+  - 'tmp/**/*.rb'
+  - 'public/**/*.rb'
