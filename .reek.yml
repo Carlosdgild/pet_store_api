@@ -1,0 +1,117 @@
+exclude_paths:
+  - 'db/migrate'
+  - 'vendor'
+  - 'tmp'
+  - 'public'
+  - 'hooks'
+detectors:
+  BooleanParameter:
+    enabled: false
+  ControlParameter:
+    enabled: false
+  DataClump:
+    enabled: true
+    exclude:
+      - 'ApiController'
+      - 'ApplicationController'
+  DuplicateMethodCall:
+    max_calls: 3
+    allow_calls:
+      - /\w+\[[\w:'"]+\]/
+      - 'session'
+      - 'params'
+      - 'Rails.logger'
+  FeatureEnvy:
+    exclude:
+      - '/=\Z/'
+  IrresponsibleModule:
+    enabled: true
+    exclude:
+      - '/.*(Error|Exception)/'
+  LongParameterList:
+    max_params: 5
+  ManualDispatch:
+    enabled: true
+    exclude:
+      - 'ApiController'
+  MissingSafeMethod:
+    enabled: true
+    exclude:
+      - 'ApiController'
+      - 'ApplicationController'
+  NestedIterators:
+    max_allowed_nesting: 3
+  NilCheck:
+    enabled: false
+  RepeatedConditional:
+    enabled: false
+  TooManyInstanceVariables:
+    max_instance_variables: 8
+  TooManyMethods:
+    enabled: false
+  TooManyStatements:
+    exclude:
+      - initialize
+    max_statements: 20
+  UncommunicativeMethodName:
+    accept:
+      - '/.*_\d{3}$/'
+      - '/.*(?:line|street)_\d+$/'
+  UncommunicativeModuleName:
+    accept:
+      - '/(?:::)?V[0-9]+$/'
+  UncommunicativeParameterName:
+    accept:
+      - '/.*(?:line|street)_\d+$/'
+  UncommunicativeVariableName:
+    enabled: false
+  UnusedPrivateMethod:
+    enabled: true
+  UtilityFunction:
+    public_methods_only: true
+directories:
+  'app/controllers':
+    DuplicateMethodCall:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+    InstanceVariableAssumption:
+      enabled: false
+    TooManyInstanceVariables:
+      enabled: false
+    TooManyStatements:
+      enabled: false
+    UnusedPrivateMethod:
+      enabled: false
+    IrresponsibleModule:
+      enabled: false
+  'app/factories':
+    FeatureEnvy:
+      enabled: false
+  'app/helpers':
+    DataClump:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+  'db':
+    FeatureEnvy:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+  'spec/':
+    ControlParameter:
+      enabled: false
+    DataClump:
+      enabled: false
+    DuplicateMethodCall:
+      enabled: false
+    FeatureEnvy:
+      enabled: false
+    IrresponsibleModule:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+    TooManyStatements:
+      enabled: false
