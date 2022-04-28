@@ -36,26 +36,62 @@ RSpec.describe "Pets API", type: :request do
       let!(:pets) { create_list(:pet, 10) }
 
       response 200, "Gets a list of pets" do
-        examples "application/json" =>
-        {
-          "data" => [
-            { "id" => 17,
-            "name" => "pet_test_1",
-            "tag" => "pet_tag_1" }
-          ],
-          "meta" => {
-            "total_pages" => 10,
-            "page_number" => 1,
-            "max_per_page" => 1,
-            "total_resources" => 10
+        context "without pagination" do
+          examples "application/json" =>
+          {
+            "data" => [
+              { "id" => 17,
+              "name" => "pet_test_17",
+              "tag" => "pet_tag_17" }
+            ],
+            "meta" => {
+              "total_pages" => 10,
+              "page_number" => 1,
+              "max_per_page" => 1,
+              "total_resources" => 10
+            }
           }
-        }
 
-        run_test! do |response|
-          pet_data = json_response[:data].first
+          run_test! do |response|
+            pet_data = json_response[:data].first
 
-          expect(response).to have_http_status(:ok)
-          expect(pet_data).to contain_attributes(pet_response_attributes)
+            expect(response).to have_http_status(:ok)
+            expect(pet_data).to contain_attributes(pet_response_attributes)
+          end
+        end
+
+        context "with pagination" do
+          parameter name: :page, in: :query, type: :integer, required: false, example: 2
+          parameter name: :per_page, in: :query, type: :integer, required: false, example: 2
+
+          let(:page) { 2 }
+          let(:per_page) { 2 }
+
+          examples "application/json" =>
+          {
+            "data" => [
+              { "id" => 17,
+              "name" => "pet_test_17",
+              "tag" => "pet_tag_17" },
+            { "id" => 18,
+            "name" => "pet_test_18",
+            "tag" => "pet_tag_18" }
+            ],
+            "meta" => {
+              "total_pages" => 5,
+              "page_number" => 2,
+              "max_per_page" => 2,
+              "total_resources" => 10
+            }
+          }
+
+          run_test! do |response|
+            pet_data = json_response[:data].first
+            byebug
+
+            expect(response).to have_http_status(:ok)
+            expect(pet_data).to contain_attributes(pet_response_attributes)
+          end
         end
       end
     end
@@ -76,8 +112,8 @@ RSpec.describe "Pets API", type: :request do
         {
           "data" => {
             "id" => 17,
-            "name" => "pet_test_1",
-            "tag" => "pet_tag_1"
+            "name" => "pet_test_17",
+            "tag" => "pet_tag_17"
           },
           "meta" => nil
         }
