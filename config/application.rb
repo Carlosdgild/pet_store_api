@@ -47,7 +47,7 @@ module PetStoreApi
     # Adding manually some middlewares needed
     # https://guides.rubyonrails.org/api_app.html#using-session-middlewares
     # This also configures session_options for use below
-    config.session_store :cookie_store, key: "_starter_rails_api_session"
+    config.session_store :cookie_store, key: "_pet_store_api_session"
     # Required for all session management (regardless of session_store)
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use config.session_store, config.session_options
