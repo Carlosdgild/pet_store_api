@@ -87,7 +87,6 @@ RSpec.describe "Pets API", type: :request do
 
           run_test! do |response|
             pet_data = json_response[:data].first
-            byebug
 
             expect(response).to have_http_status(:ok)
             expect(pet_data).to contain_attributes(pet_response_attributes)
