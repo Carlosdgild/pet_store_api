@@ -24,6 +24,29 @@ RSpec.configure do |config|
       paths: {},
       components: {
         securitySchemes: {
+        },
+        schemas: {
+          Pet: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer', format: 'int64' },
+              name: { type: 'string' },
+              tag: { type: 'string' },
+            },
+            required: %w[id name]
+          },
+          Pets: {
+            type: 'array',
+            items: { '$ref' => '#/components/schemas/Pet' }
+          },
+          Error: {
+            type: 'object',
+            properties: {
+              code: { type: 'integer', format: 'int32' },
+              message: { type: 'string' },
+            },
+            required: %w[code message]
+          },
         }
       },
       servers: [

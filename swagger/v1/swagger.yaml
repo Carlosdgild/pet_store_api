@@ -40,6 +40,8 @@ paths:
                   page_number: 2
                   max_per_page: 2
                   total_resources: 10
+              schema:
+                "$ref": "#/components/schemas/Pets"
     post:
       summary: Create pet
       tags:
@@ -56,6 +58,8 @@ paths:
                   name: my pet
                   tag: dog
                 meta: 
+              schema:
+                "$ref": "#/components/schemas/Pet"
         '422':
           description: Invalid parameters
           content:
@@ -63,6 +67,8 @@ paths:
               example:
                 message: Could not create record
                 code: 9
+              schema:
+                "$ref": "#/components/schemas/Error"
       requestBody:
         content:
           application/json:
@@ -105,6 +111,8 @@ paths:
                   name: pet_test_17
                   tag: pet_tag_17
                 meta: 
+              schema:
+                "$ref": "#/components/schemas/Pet"
         '404':
           description: Resource not found
           content:
@@ -112,8 +120,39 @@ paths:
               example:
                 message: Could not find resource
                 code: 4
+              schema:
+                "$ref": "#/components/schemas/Error"
 components:
   securitySchemes: {}
+  schemas:
+    Pet:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: string
+      required:
+      - id
+      - name
+    Pets:
+      type: array
+      items:
+        "$ref": "#/components/schemas/Pet"
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+      required:
+      - code
+      - message
 servers:
 - url: http://{localHost}
   variables:

@@ -36,6 +36,8 @@ RSpec.describe "Pets API", type: :request do
       let!(:pets) { create_list(:pet, 10) }
 
       response 200, "Gets a list of pets" do
+        schema '$ref' => '#/components/schemas/Pets'
+
         context "without pagination" do
           examples "application/json" =>
           {
@@ -116,6 +118,7 @@ RSpec.describe "Pets API", type: :request do
           },
           "meta" => nil
         }
+        schema '$ref' => '#/components/schemas/Pet'
 
         run_test! do |response|
           pet_data = json_response[:data]
@@ -130,6 +133,7 @@ RSpec.describe "Pets API", type: :request do
           "message" => "Could not find resource",
           "code" => 4
         }
+        schema '$ref' => '#/components/schemas/Error'
 
         let(:pet_id) { 0 }
 
@@ -180,6 +184,7 @@ RSpec.describe "Pets API", type: :request do
           },
           "meta" => nil
         }
+        schema '$ref' => '#/components/schemas/Pet'
 
         run_test! do |response|
           pet_data = json_response[:data]
@@ -194,6 +199,7 @@ RSpec.describe "Pets API", type: :request do
           "message" => "Could not create record",
           "code" => 9
         }
+        schema '$ref' => '#/components/schemas/Error'
 
         let(:name) { nil }
 
