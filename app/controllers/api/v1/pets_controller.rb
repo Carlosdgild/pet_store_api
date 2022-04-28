@@ -20,9 +20,9 @@ module Api
         pet = Pet.new(pet_params)
 
         if pet.save
-          render_error_response("Could not create record", :unprocessable_entity, 9)
-        else
           render_response(data: pet, status_code: :ok, serializer: PetSerializer, meta: nil)
+        else
+          render_error_response("Could not create record", :unprocessable_entity, 9)
         end
       end
 

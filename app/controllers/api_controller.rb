@@ -46,7 +46,7 @@ class ApiController < ApplicationController
   def handle_active_record_not_found_error(error)
     logger.error(error&.message)
 
-    render_error_response("Couldn't find resource", :not_found, 4)
+    render_error_response("Could not find resource", :not_found, 4)
   end
 
   def handle_active_record_statement_invalid_error(error)
